@@ -14,9 +14,9 @@ def draw_letters
       letters_array.push(letter.to_s)
     end
   end
-  return letters_array
+  return letters_array.sample(10)
 end
-pp draw_letters
+
 def display_drawn_letters(letters)
   puts "You have drawn the letters:"
   puts letters.join(', ')
