@@ -9,3 +9,21 @@ def draw_letters
   end
   return letters_array.sample(10)
 end
+
+letters_in_hand = ['a','e','s','a','t','t']
+input = gets.chomp
+
+# def uses_available_letters?(input, letters_in_hand)
+  input_array = input.chars
+  if input_array.length <= letters_in_hand.length
+   input_array.each do |letter|
+    if letters_in_hand.include?(letter)
+      letters_in_hand.delete(letter)
+    else
+      false
+    end
+   end
+  else
+    false
+  end
+# end
