@@ -10,20 +10,22 @@ def draw_letters
   return letters_array.sample(10)
 end
 
-letters_in_hand = ['a','e','s','a','t','t']
-input = gets.chomp
 
-# def uses_available_letters?(input, letters_in_hand)
+def uses_available_letters?(input, letters_in_hand)
   input_array = input.chars
+  letters_copy = letters_in_hand.dup
+
   if input_array.length <= letters_in_hand.length
    input_array.each do |letter|
-    if letters_in_hand.include?(letter)
-      letters_in_hand.delete(letter)
+    if letters_copy.include?(letter)
+      letters_copy.delete(letter)
     else
-      false
+      return false
     end
    end
+   return true
   else
-    false
+    return false
   end
-# end
+end
+
