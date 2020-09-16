@@ -59,3 +59,39 @@ def score_word(word)
   end
   return score
 end
+
+words = ["apple", "banana", "jessica", "kayla"]
+# def highest_score_from(words)
+best_words = []
+highest_score = 0
+winner = {}
+
+words.each do |word|
+  if score_word(word) > highest_score
+    best_words.clear
+    best_words << word
+    highest_score = score_word(word)
+  elsif score_word(word) == highest_score
+    best_words << word
+  end
+end
+
+if best_words.length > 1
+  shortest_words = []
+  word_length = 10
+  best_words.each do |word|
+    if word.length < word_length
+      word_length = word.length
+      shortest_words << word
+    elsif wo
+    end
+
+  end
+end
+
+winner[:word] = best_words[0]
+winner[:score] = highest_score
+  # return winner
+# end
+
+puts winner
