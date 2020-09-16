@@ -28,3 +28,34 @@ def uses_available_letters?(input, letters_in_hand)
     return false
   end
 end
+
+# puts "give me a word:"
+# word = gets.chomp
+def score_word(word)
+  word_array = word.upcase.chars
+  score = 0
+
+  if word_array.length > 6
+    score += 8
+  end
+
+  word_array.each do |letter|
+    case letter
+    when "A", "E", "I", "O", "L", "N", "R", "S", "T"
+      score += 1
+    when "D", "G"
+      score += 2
+    when "B", "C", "M", "P"
+      score += 3
+    when "F", "H", "V", "W", "Y"
+      score += 4
+    when "K"
+      score += 5
+    when "J", "X"
+      score += 8
+    when "Q", "Z"
+      score += 10
+    end
+  end
+  return score
+end
