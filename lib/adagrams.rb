@@ -60,43 +60,43 @@ def score_word(word)
   return score
 end
 
-words = ["apple", "banana", "jessica", "kayla", "jxx", "qzh"]
-# def highest_score_from(words)
-winning_word_array = nil
-best_words = []
-highest_score = 0
-winner = {}
-
-words.each do |word|
-  if score_word(word) > highest_score
-    best_words.clear
-    best_words << word
-    highest_score = score_word(word)
-  elsif score_word(word) == highest_score
-    best_words << word
-  end
-end
-
-if best_words.length > 1
-  shortest_words = []
-  word_length = 10
-  best_words.each do |word|
-    if word.length < word_length
-      shortest_words.clear
-      shortest_words << word
-      word_length = word.length
-    elsif word.length == word_length
-      shortest_words << word
+# words = ["apple", "banana", "jessica", "kayla", "jxx", "KDGAEIOLNR", "qzh"]
+def highest_score_from(words)
+  best_words = []
+  highest_score = 0
+  winner = {}
+  words.each do |word|
+    if score_word(word) > highest_score
+      best_words.clear
+      best_words << word
+      highest_score = score_word(word)
+    elsif score_word(word) == highest_score
+      best_words << word
     end
   end
-  winning_word_array = shortest_words
-else
-  winning_word_array = best_words
+
+  if best_words.length > 1
+    tie_breaker = []
+    word_length = 10
+    best_words.each do |word|
+      if word.length == 10
+        tie_breaker.clear
+        tie_breaker << word
+        break
+      elsif word.length < word_length
+        tie_breaker.clear
+        tie_breaker << word
+        word_length = word.length
+      end
+    end
+    winning_word_array = tie_breaker
+  else
+    winning_word_array = best_words
+  end
+
+  winner[:word] = winning_word_array[0]
+  winner[:score] = highest_score
+  return winner
 end
 
-winner[:word] = winning_word_array[0]
-winner[:score] = highest_score
-  # return winner
-# end
-
-puts winner
+# puts winner
