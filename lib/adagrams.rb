@@ -13,7 +13,7 @@ def draw_letters
 end
 
 def uses_available_letters?(input, letters_in_hand)
-  input_array = input.chars
+  input_array = input.upcase.chars
   letters_copy = letters_in_hand.dup
   if input_array.length <= letters_in_hand.length
     input_array.each do |letter|
@@ -41,7 +41,7 @@ def score_word(word)
 
   word_array.each do |letter|
     case letter
-    when "A", "E", "I", "O", "L", "N", "R", "S", "T"
+    when "A", "E", "I", "O", "U", "L", "N", "R", "S", "T"
       score += 1
     when "D", "G"
       score += 2
@@ -100,3 +100,4 @@ def highest_score_from(words)
 end
 
 # puts winner
+
