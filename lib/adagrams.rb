@@ -18,7 +18,7 @@ def uses_available_letters?(input, letters_in_hand)
   if input_array.length <= letters_in_hand.length
     input_array.each do |letter|
       if letters_copy.include?(letter)
-        letters_copy.delete(letter)
+        letters_copy.delete_at(letters_copy.index(letter))
       else
         return false
       end
@@ -29,8 +29,6 @@ def uses_available_letters?(input, letters_in_hand)
   end
 end
 
-# puts "give me a word:"
-# word = gets.chomp
 def score_word(word)
   word_array = word.upcase.chars
   score = 0
@@ -60,7 +58,6 @@ def score_word(word)
   return score
 end
 
-# words = ["apple", "banana", "jessica", "kayla", "jxx", "KDGAEIOLNR", "qzh"]
 def highest_score_from(words)
   best_words = []
   highest_score = 0
@@ -99,5 +96,5 @@ def highest_score_from(words)
   return winner
 end
 
-# puts winner
+
 
