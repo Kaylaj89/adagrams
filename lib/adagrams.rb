@@ -4,6 +4,7 @@ def draw_letters
                    U: 4, V: 2, W: 2, X: 1, Y: 2, Z: 1 }
   letters_array = []
 
+  # create an array with all the letters matching their frequency
   letters_hash.each_pair do |letter, frequency|
     frequency.times do
       letters_array.push(letter.to_s)
@@ -12,6 +13,7 @@ def draw_letters
   return letters_array.sample(10)
 end
 
+#Make a copy of letters_in_hand and delete as we cycle through input_array letters
 def uses_available_letters?(input, letters_in_hand)
   input_array = input.upcase.chars
   letters_copy = letters_in_hand.dup
@@ -58,6 +60,8 @@ def score_word(word)
   return score
 end
 
+# create 3 different scenarios for highest_score
+#  scenario 1: single high scoring word
 def highest_score_from(words)
   best_words = []
   highest_score = 0
@@ -72,6 +76,8 @@ def highest_score_from(words)
     end
   end
 
+  # scenario 2: first ten letter word wins in tie-break
+  # scenario 3: first shortest word wins in tie-break
   if best_words.length > 1
     tie_breaker = []
     word_length = 10
@@ -91,6 +97,7 @@ def highest_score_from(words)
     winning_word_array = best_words
   end
 
+  #Assigning hash values
   winner[:word] = winning_word_array[0]
   winner[:score] = highest_score
   return winner
